@@ -1,3 +1,5 @@
+
+
 window 
 property on visible
 /*resets calendar view and date selection to today*/
@@ -18,4 +20,6 @@ Back Arrow Onselect:    Set(_firstDayOfMonth, DateAdd(_firstDayOfMonth, -1, Time
                         If(_minDate > _firstDayOfMonth, Set(_minDate, _firstDayOfMonth))
 
 Next Arrow Onselect:    Set(_firstDayOfMonth,DateAdd(_firstDayOfMonth,1,TimeUnit.Months));Set(_firstDayInView,DateAdd(_firstDayOfMonth,-(Weekday(_firstDayOfMonth)-2+1),TimeUnit.Days));
-                        Set(_lastDayOfMonth,DateAdd(DateAdd(_firstDayOfMonth,1,TimeUnit.Months),-1,TimeUnit.Days));If(_lastDayOfMonth>_maxDate,Set(_maxDate,_lastDayOfMonth);)
+                        Set(_lastDayOfMonth,DateAdd(DateAdd(_firstDayOfMonth,1,TimeUnit.Months),-1,TimeUnit.Days));If(_lastDayOfMonth>_maxDate,Set(_maxDate,_lastDayOfMonth);)irce
+
+Circle fill color : If(ThisItem.Leave_Type.Value="Personal Leave",RGBA(255,230,0,1),ThisItem.Leave_Type.Value="Flexible Leave",RGBA(24,157,62,1),ThisItem.Leave_Type.Value="Sick Leave",RGBA(23,119,207,1),ThisItem.Leave_Type.Value="Public Holiday",RGBA(16,144,244,1),ThisItem.Leave_Type.Value="Annual Leave",RGBA(114,75,195,1),ThisItem.Leave_Type.Value="Maternity Leave",RGBA(146,43,115,1))
