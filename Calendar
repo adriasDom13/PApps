@@ -10,3 +10,12 @@ property on visible
 
 Monthday Gallery
 Items: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19, 20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41]
+
+Back Arrow Onselect:    Set(_firstDayOfMonth, DateAdd(_firstDayOfMonth, -1, TimeUnit.Months));
+                        Set(_firstDayInView, DateAdd(_firstDayOfMonth, -(Weekday(_firstDayOfMonth) - 2 + 1), TimeUnit.Days));
+                        Set(_lastDayOfMonth, DateAdd(DateAdd(_firstDayOfMonth, 1, TimeUnit.Months), -1, TimeUnit.Days));
+                        /*collects calendar events for all days in current month view. Updates _minDate to prevent duplicate data collection if user returns to this month view*/
+                        If(_minDate > _firstDayOfMonth, Set(_minDate, _firstDayOfMonth))
+
+Next Arrow Onselect:    Set(_firstDayOfMonth,DateAdd(_firstDayOfMonth,1,TimeUnit.Months));Set(_firstDayInView,DateAdd(_firstDayOfMonth,-(Weekday(_firstDayOfMonth)-2+1),TimeUnit.Days));
+                        Set(_lastDayOfMonth,DateAdd(DateAdd(_firstDayOfMonth,1,TimeUnit.Months),-1,TimeUnit.Days));If(_lastDayOfMonth>_maxDate,Set(_maxDate,_lastDayOfMonth);)
