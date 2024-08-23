@@ -23,3 +23,17 @@ Next Arrow Onselect:    Set(_firstDayOfMonth,DateAdd(_firstDayOfMonth,1,TimeUnit
                         Set(_lastDayOfMonth,DateAdd(DateAdd(_firstDayOfMonth,1,TimeUnit.Months),-1,TimeUnit.Days));If(_lastDayOfMonth>_maxDate,Set(_maxDate,_lastDayOfMonth);)irce
 
 Circle fill color : If(ThisItem.Leave_Type.Value="Personal Leave",RGBA(255,230,0,1),ThisItem.Leave_Type.Value="Flexible Leave",RGBA(24,157,62,1),ThisItem.Leave_Type.Value="Sick Leave",RGBA(23,119,207,1),ThisItem.Leave_Type.Value="Public Holiday",RGBA(16,144,244,1),ThisItem.Leave_Type.Value="Annual Leave",RGBA(114,75,195,1),ThisItem.Leave_Type.Value="Maternity Leave",RGBA(146,43,115,1))
+
+highlight today: /*Fill value changes if the gallery item day = today, or if it lies outside of the current month*/             
+If(
+    /*Date selected is today*/
+    DateAdd(_firstDayInView, ThisItem.Value) = Today() && DateAdd(_firstDayInView, ThisItem.Value) = _dateSelected, RGBA(0,0,0,0),
+    /*Today when it is not selected*/
+    DateAdd(_firstDayInView, ThisItem.Value) = Today(), ColorFade(Subcircle1_1.Fill, 0.40), 
+    /*The day is outside the range of the currently selected month*/
+    Abs(Self.Text - ThisItem.Value) > 10,RGBA(200, 200, 200, 0.3), RGBA(0, 0, 0, 0))
+
+
+
+
+
