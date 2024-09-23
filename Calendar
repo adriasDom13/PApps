@@ -16,6 +16,8 @@ Items: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19, 20,21,22,23,24,25,26,
 inside small gallery = Filter(tbl_Leave_Calendar,DateAdd(_firstDayInView,ThisItem.Value,TimeUnit.Days)>=Start_Date && DateAdd(_firstDayInView,ThisItem.Value,TimeUnit.Days)<=End_Date)
 
 
+leave circle fill inside small gallery = If(ThisItem.Leave_Type.Value="Vacation Leave",Color.Yellow,ThisItem.Leave_Type.Value="Flexible Leave",RGBA(24,157,62,1),ThisItem.Leave_Type.Value="Sick Leave",Color.Red,ThisItem.Leave_Type.Value="Public Holiday",RGBA(16,144,244,1),ThisItem.Leave_Type.Value="Annual Leave",RGBA(114,75,195,1),ThisItem.Leave_Type.Value="Maternity Leave",RGBA(146,43,115,1))
+
 
 Back Arrow Onselect:    Set(_firstDayOfMonth, DateAdd(_firstDayOfMonth, -1, TimeUnit.Months));
                         Set(_firstDayInView, DateAdd(_firstDayOfMonth, -(Weekday(_firstDayOfMonth) - 2 + 1), TimeUnit.Days));
